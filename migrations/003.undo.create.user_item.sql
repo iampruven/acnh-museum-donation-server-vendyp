@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS acnh_user_item;

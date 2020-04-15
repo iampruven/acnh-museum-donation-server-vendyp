@@ -1,8 +1,13 @@
 const AddItemService = {
   getNewItems(knex,user_id) {
-    return knex("acnh_user_item").select("*")
-    .join('animal_crossing', 'acnh_user_item.item_id', '=','animal_crossing.id')
-    .where('user_id',user_id);
+    // return knex("acnh_user_item").select("*")
+    // .join('animal_crossing', 'acnh_user_item.item_id', '=','animal_crossing.id')
+    // .where('user_id',user_id);
+    return knex
+      .select("animal_crossing.*")
+      .from("acnh_user_item")
+      .join("animal_crossing", "acnh_user_item.item_id","=", "animal_crossing.id")
+      .where("user_id", user_id);
   },
   insertItem(knex, newItem) {
     return knex

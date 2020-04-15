@@ -1,10 +1,7 @@
 const AddItemService = {
   getNewItems(knex,user_id) {
-    // return knex("acnh_user_item").select("*")
-    // .join('animal_crossing', 'acnh_user_item.item_id', '=','animal_crossing.id')
-    // .where('user_id',user_id);
     return knex
-      .select("animal_crossing.*")
+      .select("animal_crossing.id", "animal_crossing.img", "animal_crossing.type", "animal_crossing.name", "acnh_user_item.date")
       .from("acnh_user_item")
       .join("animal_crossing", "acnh_user_item.item_id","=", "animal_crossing.id")
       .where("user_id", user_id);
@@ -28,7 +25,8 @@ const AddItemService = {
   },
   deleteItem(knex, id) {
     return knex("acnh_user_item").where({ id }).del();
-  },
+  } 
+  
 };
 
 module.exports = AddItemService;

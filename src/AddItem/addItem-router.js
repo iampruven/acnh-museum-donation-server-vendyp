@@ -6,15 +6,14 @@ const AddItemRouter = express.Router()
 AddItemRouter
     .route('/')
     .get((req,res,next)=>{
-        const knexInstance = req.app.get("db")
-        AddItemServices.getNewItems(knexInstance,1) //update with req.user.id instead of 1
+        // const knexInstance = req.app.get("db")
+        AddItemServices.getNewItems(req.app.get('db'),1) //update with req.user.id instead of 1
             .then(newItem=>{
                 res.json(newItem)
             })
             .catch(next)
     })
     .post(jsonParser, (req,res,next)=>{
-        
         const { name } = req.body;
         const  user_id = 1; //remove 1 when have authorization for login put this instead  of 1 -> req.user.id 
         console.log(req.body);
@@ -22,12 +21,12 @@ AddItemRouter
         AddItemServices.getByName(knexInstance,name)
             .then(data=>{
                 const item_id = data.id
-                const newItem = { user_id, item_id}
+                const newItem = { user_id, item_id }
                 return AddItemServices.insertItem(knexInstance,newItem)
                     .then(userItem=>{
                         userItem.name = data.name
                         userItem.img = data.img
-                        console.log(name)
+                        console.log(userItem)
                         res.status(201).json(userItem)
                     })
             })

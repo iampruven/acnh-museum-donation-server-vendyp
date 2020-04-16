@@ -39,12 +39,13 @@ AddItemRouter
 
 AddItemRouter
     .route('/:id')
-    .delete((req,res)=>{
+    .delete((req,res,next)=>{
         const { id } = req.params
         const knexInstance = req.app.get("db")
         AddItemServices.deleteItem(knexInstance,id)
             .then(() =>
                 res.status(204).end())
+            .catch(next);
     })
     
 

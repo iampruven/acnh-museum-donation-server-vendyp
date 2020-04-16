@@ -24,7 +24,7 @@ const AddItemService = {
       return knex.from("animal_crossing").select("*").where("name", name).first();
   },
   deleteItem(knex, id) {
-    return knex("acnh_user_item").where({ id }).del();
+    return knex("acnh_user_item").where({ item_id:id, user_id:1 }).del();
   } 
   
 };

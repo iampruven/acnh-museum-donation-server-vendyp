@@ -2,9 +2,10 @@ const express = require('express')
 const AddItemServices = require('./addItem-service')
 const jsonParser = express.json();
 const AddItemRouter = express.Router()
-
+const { requireAuth } = require('../middleware/basic-auth')
 AddItemRouter
     .route('/')
+    .all(requireAuth)
     .get((req,res,next)=>{
         // const knexInstance = req.app.get("db")
         AddItemServices.getNewItems(req.app.get('db'),1) //update with req.user.id instead of 1
@@ -39,6 +40,7 @@ AddItemRouter
 
 AddItemRouter
     .route('/:id')
+    .all(requireAuth)
     .delete((req,res,next)=>{
         
         const { id } = req.params

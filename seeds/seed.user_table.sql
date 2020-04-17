@@ -1,4 +1,4 @@
 INSERT INTO acnh_users
 (username, password)
 VALUES
-('apple', '!23@4578')
+('apple', '$2a$12$uTIq8I/azuBzn755LYBfxeIHNA/a6AHZiAN09uRQ6.5n30QudmBfK')

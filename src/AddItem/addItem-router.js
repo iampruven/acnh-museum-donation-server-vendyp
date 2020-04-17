@@ -2,7 +2,7 @@ const express = require('express')
 const AddItemServices = require('./addItem-service')
 const jsonParser = express.json();
 const AddItemRouter = express.Router()
-const { requireAuth } = require('../middleware/basic-auth')
+const { requireAuth } = require('../middleware/jwt-auth')
 AddItemRouter
     .route('/')
     .all(requireAuth)

@@ -8,7 +8,7 @@ AddItemRouter
     .all(requireAuth)
     .get((req,res,next)=>{
         // const knexInstance = req.app.get("db")
-        AddItemServices.getNewItems(req.app.get('db'),1) //update with req.user.id instead of 1
+        AddItemServices.getNewItems(req.app.get('db'),req.user.id) //update with req.user.id instead of 1
             .then(newItem=>{
                 res.json(newItem)
             })
@@ -16,7 +16,7 @@ AddItemRouter
     })
     .post(jsonParser, (req,res,next)=>{
         const { name, date } = req.body;
-        const  user_id = 1; //remove 1 when have authorization for login put this instead  of 1 -> req.user.id 
+        const  user_id = req.user.id; //remove 1 when have authorization for login put this instead  of 1 -> req.user.id 
         console.log(req.body);
         const knexInstance = req.app.get("db")
         AddItemServices.getByName(knexInstance,name)

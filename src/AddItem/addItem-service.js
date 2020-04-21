@@ -23,10 +23,12 @@ const AddItemService = {
   getByName(knex, name){
       return knex.from("animal_crossing").select("*").where("name", name).first();
   },
-  deleteItem(knex, id) {
-    return knex("acnh_user_item").where({ item_id:id, user_id:1 }).del();
-  } 
-  
+  deleteItem(knex, id, user_id) {
+    return knex("acnh_user_item").where({ item_id:id, user_id:user_id }).del();
+  },
+  checkItemDonation(knex, user_id, item_id ) {
+    return knex.from("acnh_user_item").select("*").where({user_id:user_id,item_id:item_id})
+  }
 };
 
 module.exports = AddItemService;

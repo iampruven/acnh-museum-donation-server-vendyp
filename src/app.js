@@ -16,6 +16,8 @@ app.use(cors());
 app.use('/api/items', AddItemRouter);
 app.use('/api/auth', AuthRouter);
 app.use('/api/users', UsersRouter);
+app.use('/static', express.static('Public'));
+
 app.get("/", (req, res) => {
   res.send("Hello, world!");
 });

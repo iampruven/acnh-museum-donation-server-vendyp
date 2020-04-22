@@ -28,6 +28,13 @@ const AddItemService = {
   },
   checkItemDonation(knex, user_id, item_id ) {
     return knex.from("acnh_user_item").select("*").where({user_id:user_id,item_id:item_id})
+  },getAllNames(knex){
+    return knex.select('name').from('animal_crossing')
+  }, checkItemExists(knex,name){
+    return knex.from('animal_crossing').where({name}).first().then(item => {
+      console.log('eehehhhehehehheheheh',item)
+      return Boolean(item)
+    })
   }
 };
 

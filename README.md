@@ -1,6 +1,6 @@
 ACNH Museum Donation Tracker
 Link to live app:
-https://capstone-one-vp.now.sh/
+https://enigmatic-forest-29965.herokuapp.com
 
 
 

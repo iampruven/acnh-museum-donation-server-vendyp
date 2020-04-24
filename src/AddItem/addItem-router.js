@@ -20,7 +20,6 @@ AddItemRouter.route("/")
     const knexInstance = req.app.get("db");
     AddItemServices.checkItemExists(knexInstance,name)
         .then((results)=> {
-            console.log('hehehehehehehe22222', results)
             if(!results){
             console.log(results);
             return res.status(400).json({ error: `Name incorrectly spelled or does not exist.` })

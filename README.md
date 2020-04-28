@@ -63,7 +63,7 @@ As a fan of planning/tracking, I was inspired to create this app to help me keep
 - PostgreSQL
 
 
-### Summary:
+## Summary:
 
 1. User is able to GET,POST,DELETE.
 2. Create new items to add to their donation list.

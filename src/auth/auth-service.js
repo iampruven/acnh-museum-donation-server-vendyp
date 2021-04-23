@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config')
 const AuthService = {
     getUserWithUserName(db, username) {
+      console.log('Getting user by name...')
       return db('acnh_users')
         .where({username})
         .first();

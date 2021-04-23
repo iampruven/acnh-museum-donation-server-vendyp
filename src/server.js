@@ -6,6 +6,12 @@ const db = knex({
   client: "pg",
   connection: DATABASE_URL
 });
+db.raw('select 1').then(r => {
+  console.log("Connection successful")
+}).catch(err => {
+  console.error('FAILED TO CONNECT TO DATABASE')
+  console.error(err)
+})
 console.log(DATABASE_URL)
 
 app.set("db", db);

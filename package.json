@@ -26,6 +26,7 @@
     "knex": "^0.95.4",
     "morgan": "^1.10.0",
     "pg": "^8.6.0",
+    "pg-connection-string": "^2.5.0",
     "postgrator": "^4.0.0",
     "xss": "^1.0.6"
   },
